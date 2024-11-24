@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 style="font-size: 1.5em; color: #343a40;">Enter the Details</h1>
+
+    <form action="/" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" name="age" id="age" required min="0" max="120" style="width: 100%;">
+                </div>
+
+                <div class="form-group">
+                    <label for="sex">Sex</label>
+                    <select name="sex" id="sex" class="form-control">
+                        <option value="" disabled selected>Select your gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="job">Job</label>
+                    <select name="job" id="job" class="form-control">
+                        <option value="" disabled selected>Select your job</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="housing">Housing</label>
+                    <select name="housing" id="housing" class="form-control">
+                        <option value="" disabled selected>Select housing type</option>
+                        <option value="own">Own</option>
+                        <option value="free">Free</option>
+                        <option value="rent">Rent</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="saving_account">Savings Account</label>
+                    <select name="saving_account" id="saving_account" class="form-control">
+                        <option value="" disabled selected>Select savings account status</option>
+                        <option value="little">Little</option>
+                        <option value="quite rich">Quite Rich</option>
+                        <option value="rich">Rich</option>
+                        <option value="moderate">Moderate</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="checking_amount">Checking Account</label>
+                    <select name="checking_amount" id="checking_amount" class="form-control">
+                        <option value="" disabled selected>Select checking account status</option>
+                        <option value="little">Little</option>
+                        <option value="moderate">Moderate</option>
+                        <option value="rich">Rich</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="credit_amount">Credit Amount</label>
+                    <input type="number" class="form-control" name="credit_amount" placeholder="Enter amount in $"required>
+                </div>
+
+                <div class="form-group">
+                    <label for="duration">Duration</label>
+                    <input type="number" class="form-control" name="duration" placeholder="Enter in months Ex: 12" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="purpose">Purpose</label>
+            <select name="purpose" id="purpose" class="form-control">
+                <option value="" disabled selected>Select purpose</option>
+                <option value="radio/TV">Radio/TV</option>
+                <option value="education">Education</option>
+                <option value="furniture/equipment">Furniture/Equipment</option>
+                <option value="car">Car</option>
+                <option value="business">Business</option>
+                <option value="domestic appliances">Domestic Appliances</option>
+                <option value="repairs">Repairs</option>
+                <option value="vacation/others">Vacation/Others</option>
+            </select>
+        </div>
+
+        <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+    <script>
+        function validateForm() {
+            const age = document.getElementById('age').value;
+            const creditAmount = document.getElementsByName('credit_amount')[0].value;
+            const duration = document.getElementsByName('duration')[0].value;
+            const sex = document.getElementById('sex').value;
+            const job = document.getElementById('job').value;
+            const housing = document.getElementById('housing').value;
+            const savingAccount = document.getElementById('saving_account').value;
+            const checkingAmount = document.getElementById('checking_amount').value;
+            const purpose = document.getElementById('purpose').value;
+
+            if (age < 0 || age > 120) {
+                alert('Please enter a valid age between 0 and 120.');
+                return false;
+            }
+            if (creditAmount <= 0) {
+                alert('Please enter a valid credit amount greater than 0.');
+                return false;
+            }
+            if (duration <= 0) {
+                alert('Please enter a valid duration greater than 0.');
+                return false;
+            }
+            if (sex === "") {
+                alert('Please select your gender.');
+                return false;
+            }
+            if (job === "") {
+                alert('Please select your job.');
+                return false;
+            }
+            if (housing === "") {
+                alert('Please select your housing type.');
+                return false;
+            }
+            if (savingAccount === "") {
+                alert('Please select your savings account status.');
+                return false;
+            }
+            if (checkingAmount === "") {
+                alert('Please select your checking account status.');
+                return false;
+            }
+            if (purpose === "") {
+                alert('Please select the purpose of the credit.');
+                return false;
+            }
+
+            return true; // Allow form submission
+        }
+    </script>
+{% endblock %}

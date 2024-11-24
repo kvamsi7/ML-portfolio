@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 style="font-size: 1.5em; color: #343a40;">Prediction Result</h1>
+<p class="result">{{ result }}</p>
+<form action="/" method="get">
+    <button type="submit" class="btn btn-secondary">Check Another Case</button>
+</form>
+{% endblock %}

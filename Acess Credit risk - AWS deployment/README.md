@@ -33,7 +33,7 @@ credit_access_flask_deployment/
 ├── Procfile           # Elastic Beanstalk configuration
 ├── .ebextensions/     # AWS Elastic Beanstalk config files
 └── README.md          # Documentation
-
+```
 
 ## Installation and Usage
 
